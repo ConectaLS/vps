@@ -10,8 +10,10 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip > /dev/null 2>&1
 RUN unzip ngrok.zip
-RUN echo "./ngrok config add-authtoken ${NGROK_TOKEN} &&" \
-RUN echo "./ngrok tcp 22 &>/dev/null &" \
+RUN ngrok config add-authtoken 2VSp5cJR7krUjRhjjI91uiYdcNs_5eLi2ohNu5fGkGtsykngj
+RUN in ngrok.yml
+authtoken: 2VSp5cJR7krUjRhjjI91uiYdcNs_5eLi2ohNu5fGkGtsykngj
+
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
         sudo \
