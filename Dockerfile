@@ -8,11 +8,6 @@ ENV NGROK_TOKEN=${NGROK_TOKEN}
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
-RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip > /dev/null 2>&1
-RUN unzip ngrok.zip
-RUN ngrok config add-authtoken 2VSp5cJR7krUjRhjjI91uiYdcNs_5eLi2ohNu5fGkGtsykngj
-RUN in ngrok.yml
-authtoken: 2VSp5cJR7krUjRhjjI91uiYdcNs_5eLi2ohNu5fGkGtsykngj
 
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
