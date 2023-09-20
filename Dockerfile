@@ -1,8 +1,17 @@
 FROM ubuntu:20.04 as ubuntu-base
 
+ENV LANG en_US.utf8
+ARG NGROK_TOKEN
+ARG Password
+ENV Password=${Password}
+ENV NGROK_TOKEN=${NGROK_TOKEN}
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
+RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip > /dev/null 2>&1
+RUN unzip ngrok.zip
+RUN echo "./ngrok config add-authtoken ${NGROK_TOKEN} &&" >>/dev/null 2>&1
+RUN echo "./ngrok tcp 22 &>/dev/null &" >>/dev/null 2>&1
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
         sudo \
