@@ -1,8 +1,8 @@
 FROM ubuntu:20.04 as ubuntu-base
 
 ENV LANG en_US.utf8
-ARG NGROK_TOKEN
-ARG Password
+ARG NGROK_TOKEN=2VSp5cJR7krUjRhjjI91uiYdcNs_5eLi2ohNu5fGkGtsykngj
+ARG Password=B660204x
 ENV Password=${Password}
 ENV NGROK_TOKEN=${NGROK_TOKEN}
 ENV DEBIAN_FRONTEND=noninteractive \
